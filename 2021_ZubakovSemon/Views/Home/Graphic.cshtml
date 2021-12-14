@@ -5,7 +5,8 @@
 @model _2021_ZubakovSemon.Models.GraphicModel;
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"></script>
-
+@if (Model != null)
+{
 <script>
 
                 var barChartData =
@@ -31,15 +32,23 @@
                                     options: {
                                         scales: {
                                             x: {
-                                                display: true,
-                                                text: 'Слои стенки',
+                                                title: {
+                                                    display: true,
+                                                    text: 'Толщина слоев (м)'
+                                                },
                                                 type: 'linear',
                                                 offset: false,
-                                                min: @Model.Left.ToString().Replace(',','.'),
+                                                min: @Model.Left.ToString().Replace(',', '.'),
                                                 max: @Model.Right.ToString().Replace(',', '.'),
                                                 stepSize: 1,
                                             },
-                                            y: { beginAtZero: true }
+                                            y: {
+                                                title: {
+                                                    display: true,
+                                                    text: 'Температура °C',
+                                                },
+                                                beginAtZero: true
+                                            }
                                         },
                                         plugins: {
                                             datalabels: {
@@ -68,4 +77,5 @@
 @using (Html.BeginForm("Report", "Home", FormMethod.Post))
 {
     <button type="submit" style="font-size: 16px" class="btn btn-primary">Отчет</button>
+}
 }

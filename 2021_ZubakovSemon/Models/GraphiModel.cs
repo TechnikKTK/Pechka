@@ -63,7 +63,7 @@ namespace _2021_ZubakovSemon.Models
 + GetStringDouble(stenka.Tgas + 10) + "}]}";
 
                     data += string.Format("(x: {0:0.00},y: {1:0.00}),", stenka.S1 + stenka.S2 + stenka.S3, stenka.TOutBorder);
-                    layerData += ",{label: 's2', type: 'line',borderColor: 'brown', borderWidth: 4," + "data:[{ x: "
+                    layerData += ",{label: 's3', type: 'line',borderColor: 'brown', borderWidth: 4," + "data:[{ x: "
 + GetStringDouble(stenka.S1 + stenka.S2 + stenka.S3) + ", y:0},{ x: "
 + GetStringDouble(stenka.S1 + stenka.S2 + stenka.S3) + ",y:"
 + GetStringDouble(stenka.Tgas + 10) + "}]}";
@@ -85,13 +85,13 @@ namespace _2021_ZubakovSemon.Models
 + GetStringDouble(stenka.Tgas + 10) + "}]}";
                       
                     data += string.Format("(x: {0:0.00},y: {1:0.00}),", stenka.S1 + stenka.S2 + stenka.S3, stenka.T4border);
-                    layerData += ",{label: 's2', type: 'line',borderColor: 'brown', borderWidth: 4," + "data:[{ x: "
+                    layerData += ",{label: 's3', type: 'line',borderColor: 'brown', borderWidth: 4," + "data:[{ x: "
 + GetStringDouble(stenka.S1 + stenka.S2 + stenka.S3) + ", y:0},{ x: "
 + GetStringDouble(stenka.S1 + stenka.S2 + stenka.S3) + ",y:"
 + GetStringDouble(stenka.Tgas + 10) + "}]}";
                      
                     data += string.Format("(x: {0:0.00},y: {1:0.00}),", stenka.S1 + stenka.S2 + stenka.S3+ stenka.S4, stenka.TOutBorder);
-                    layerData += ",{label: 's2', type: 'line',borderColor: 'gray', borderWidth: 4," + "data:[{ x: "
+                    layerData += ",{label: 's4', type: 'line',borderColor: 'gray', borderWidth: 4," + "data:[{ x: "
 + GetStringDouble(stenka.S1 + stenka.S2 + stenka.S3 + stenka.S4) + ", y:0},{ x: "
 + GetStringDouble(stenka.S1 + stenka.S2 + stenka.S3 + stenka.S4) + ",y:"
 + GetStringDouble(stenka.Tgas + 10) + "}]}";
