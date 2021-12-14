@@ -86,7 +86,7 @@ namespace MathLib
         /// </summary> 
         public double TEnvironment
         {
-            get { return _TEnvironment; }
+            get { return Math.Round(_TEnvironment,3); }
             set { _TEnvironment = value; }
         }
 
@@ -96,7 +96,7 @@ namespace MathLib
         /// </summary> 
         public double Tgas
         {
-            get { return _Tgas; }
+            get { return Math.Round(_Tgas,3); }
             set { _Tgas = value; }
         }
 
@@ -192,7 +192,7 @@ namespace MathLib
         /// </summary>
         public double T1Stenk
         {
-            get { return _T1Stenk; }
+            get { return Math.Round(_T1Stenk,3); }
             set { _T1Stenk = value; }
         }
 
@@ -202,7 +202,7 @@ namespace MathLib
         /// </summary>
         public double T2border
         {
-            get { return _T2border; }
+            get { return Math.Round(_T2border,3); }
             set { _T2border = value; }
         }
 
@@ -212,7 +212,7 @@ namespace MathLib
         /// </summary>
         public double T3border
         {
-            get { return _T3border; }
+            get { return Math.Round(_T3border,3); }
             set { _T3border = value; }
         }
 
@@ -222,7 +222,7 @@ namespace MathLib
         /// </summary>
         public double T4border
         {
-            get { return _T4border; }
+            get { return Math.Round(_T4border,3); }
             set { _T4border = value; }
         }
 
@@ -233,7 +233,7 @@ namespace MathLib
         /// </summary>
         public double TOutBorder
         {
-            get { return _TOutBorder; }
+            get { return Math.Round(_TOutBorder,3); }
             set { _TOutBorder = value; }
         }
 
@@ -247,7 +247,7 @@ namespace MathLib
         public double A_otdachi()
         {
             double _A_otdachi = (KoefK * (Math.Pow(_TOutBorder - _TEnvironment, 0.25)) + (StefBol * ((Math.Pow(_TOutBorder, 4)) - (Math.Pow(_TEnvironment, 4)))) / (_TEnvironment + _TOutBorder));
-            return _A_otdachi;
+            return Math.Round(_A_otdachi,3);
         }
 
 
@@ -257,7 +257,7 @@ namespace MathLib
         public double ATeplo1()
         {
             double _ATeplo1 = _A1 + _B1 * 0.001 * ((_T1Stenk + _T2border) / 2d);
-            return _ATeplo1;
+            return Math.Round(_ATeplo1,3);
         }
         /// <summary>
         /// Коэффициент теплопроводности второй стенки, Вт/(м*К)
@@ -265,7 +265,7 @@ namespace MathLib
         public double ATeplo2()
         {
             double _ATeplo2 = _A2 + _B2 * 0.001 * ((_T2border + _T3border) / 2d);
-            return _ATeplo2;
+            return Math.Round(_ATeplo2,3);
         }
         /// <summary>
         /// Коэффициент теплопроводности третьей стенки, Вт/(м*К)
@@ -273,7 +273,7 @@ namespace MathLib
         public double ATeplo3()
         {
             double _ATeplo3 = _A3 + _B3 * 0.001 * ((_T3border + _T4border) / 2);
-            return _ATeplo3;
+            return Math.Round(_ATeplo3,3);
         }
         /// <summary>
         /// Коэффициент теплопроводности четвертой стенки, Вт/(м*К)
@@ -281,7 +281,7 @@ namespace MathLib
         public double ATeplo4()
         {
             double _ATeplo4 = _A4 + _B4 * 0.001 * ((_T4border + _TOutBorder) / 2);
-            return _ATeplo4;
+            return Math.Round(_ATeplo4,3);
         }
         /// <summary>
         /// Плотность теплового потока от газа к стенке, Вт/м2
@@ -296,7 +296,7 @@ namespace MathLib
         {
             double _Qgas = SumKoef * (_Tgas - _T1Stenk);
 
-            return _Qgas;
+            return Math.Round(_Qgas,3);
         }
         /// <summary>
         /// Плотность теплового потока в первой стенке, Вт/м2
@@ -307,7 +307,7 @@ namespace MathLib
             double _Q1Stenk = (_T1Stenk - _T2border) / (_S1 / ATeplo1());
 
 
-            return _Q1Stenk;
+            return Math.Round(_Q1Stenk,3);
 
         }
 
@@ -333,7 +333,7 @@ namespace MathLib
                 _Q2Stenk = (_T2border - _T3border) / (S2 / ATeplo2());
             }
 
-            return _Q2Stenk;
+            return Math.Round(_Q2Stenk,3);
 
         }
         /// <summary>
@@ -354,7 +354,7 @@ namespace MathLib
             {
                 _Q3Stenk = (_T3border - _T4border) / (_S3 / ATeplo3());
             }
-            return _Q3Stenk;
+            return Math.Round(_Q3Stenk,3);
         }
         /// <summary>
         /// Плотность теплового потока в четвертой стенке, Вт/м2
@@ -364,7 +364,7 @@ namespace MathLib
            
             double _Q4Stenk = (_T4border - TOutBorder) / (S4 / ATeplo4());
             
-            return _Q4Stenk;
+            return Math.Round(_Q4Stenk,3);
         }
 
         /// <summary>
@@ -376,7 +376,7 @@ namespace MathLib
             
 
 
-            return _Qenvironment;
+            return Math.Round(_Qenvironment, 3);
             
         }
      
