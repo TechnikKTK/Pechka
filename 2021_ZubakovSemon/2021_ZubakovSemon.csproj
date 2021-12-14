@@ -25,6 +25,7 @@
   <ItemGroup>
     <PackageReference Include="Chart.js" Version="2.9.3" />
     <PackageReference Include="FastReport.OpenSource" Version="2020.4.9" />
+    <PackageReference Include="FastReport.OpenSource.Export.PdfSimple" Version="2020.4.9" />
     <PackageReference Include="FastReport.OpenSource.Web" Version="2020.4.9" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />

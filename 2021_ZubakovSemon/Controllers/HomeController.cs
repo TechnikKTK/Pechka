@@ -147,11 +147,38 @@ namespace _2021_ZubakovSemon.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+
+
         public IActionResult Report()
         {
             if (HttpContext.Session.Keys.Contains("Output"))
             {
                 DataOutputModel Raschet = HttpContext.Session.Get<DataOutputModel>("Output");
+
+                var webReport = new WebReport();
+
+                webReport.Report.Load(Path.Combine(_hostingEnvironment.ContentRootPath, $"wwwroot\\report\\{Raschet.Layers}Layers.frx"));
+                webReport.ShowPreparedReport = false;
+                webReport.ShowExports = false;
+                webReport.ShowExports = false;
+                webReport.ShowPrint = false;
+
+                var output = ReportModel.GetTable<DataOutputModel>(new DataOutputModel[] { Raschet }, "Model");
+                var input = ReportModel.GetTable<StenkaMathLib>(new StenkaMathLib[] { Raschet.StenkaData }, "DataInput");
+
+                webReport.Report.RegisterData(input, "DataInput");
+                webReport.Report.RegisterData(output, "Model");
+                return View(webReport);
+            }
+            return View();
+        }
+
+        public FileResult GetFile()
+        {
+            if (HttpContext.Session.Keys.Contains("Output"))
+            {
+                DataOutputModel Raschet = HttpContext.Session.Get<DataOutputModel>("Output");
+
 
                 var webReport = new WebReport();
 
@@ -162,9 +189,29 @@ namespace _2021_ZubakovSemon.Controllers
 
                 webReport.Report.RegisterData(input, "DataInput");
                 webReport.Report.RegisterData(output, "Model");
-                return View(webReport);
+                if (webReport.Report.Prepare())
+                {
+                    // Set PDF export props
+                    var exp = new FastReport.Export.PdfSimple.PDFSimpleExport();
+
+                    exp.ShowProgress = false;
+
+                    MemoryStream strm = new MemoryStream();
+                    webReport.Report.Export(exp, strm);
+                    exp.Dispose();
+                    strm.Position = 0;
+
+                    return File(strm, "application/pdf", $"Report{DateTime.Now.ToShortDateString()}.pdf");
+                }
+                else
+                {
+                    return null;
+                }
             }
-            return View();
+            else
+            {
+                return null;
+            }
         }
     }
 }

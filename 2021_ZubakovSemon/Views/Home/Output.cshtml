@@ -2,104 +2,98 @@
     ViewData["Title"] = "Результаты расчета";
 }
 @model _2021_ZubakovSemon.Models.DataOutputModel
-@using (Html.BeginForm("Graphic", "Home", FormMethod.Post))
-{
-    <div class="text-left">
-        <h2>Форма с результатами расчета</h2>
-        <div class="container">
-            <h2>Расчетные показатели</h2>
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Наименование показателя, ед. изм.</th>
-                            <th>Величина</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+<div class="text-left">
+    <h2>Форма с результатами расчета</h2>
+    <div class="container">
+        <h2>Расчетные показатели</h2>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Наименование показателя, ед. изм.</th>
+                        <th>Величина</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="layer layer_2 layer_3 layer_4">
+                        <td>Коэффициент теплоотдачи от внешней стенки в окружающую среду, альфа, Вт/(м2*К) :</td>
+                        <td>@Math.Round(Model.A_otdachi, 2)</td>
+                    </tr>
+                    <tr class="layer layer_2 layer_3 layer_4">
+                        <td>Коэффициент теплопроводности первой стенки, Вт/(м2*К):</td>
+                        <td>@Math.Round(Model.ATeplo1, 2)</td>
+                    </tr>
+                    <tr class="layer layer_2 layer_3 layer_4">
+                        <td>Коэффициент теплопроводности второй стенки, Вт/(м2*К):</td>
+                        <td>@Math.Round(Model.ATeplo2, 2)</td>
+                    </tr>
+
+                    @if (Model.Layers > 2)
+                    {
+        <tr class="layer layer_3 layer_4">
+            <td>Коэффициент теплопроводности третьей стенки, Вт/(м2*К):</td>
+            <td>@Math.Round(Model.ATeplo3, 2)</td>
+        </tr>}
+
+                    @if (Model.Layers > 3)
+                    {
+        <tr class="layer layer_4">
+            <td>Коэффициент теплопроводности четвертой стенки, Вт/(м2*К):</td>
+            <td>@Math.Round(Model.ATeplo4, 2)</td>
+        </tr>}
+
+                    <tr class="layer layer_2 layer_3 layer_4">
+                        <td>Тепловой поток от газа к стенке, Вт/м2:</td>
+                        <td>@Math.Round(Model.Q_gas, 2)</td>
+                    </tr>
+                    <tr class="layer layer_2 layer_3 layer_4">
+                        <td>Тепловой поток в первой стенке, Вт/м2:</td>
+                        <td>@Math.Round(Model.Q1Stenk, 2)</td>
+                    </tr>
+                    <tr class="layer layer_2 layer_3 layer_4">
+                        <td>Тепловой поток во второй стенке, Вт/м2:</td>
+                        <td>@Math.Round(Model.Q2Stenk, 2)</td>
+                    </tr>
+
+                    @if (Model.Layers > 2)
+                    {
+        <tr class="layer layer_3 layer_4">
+            <td>Тепловой поток в третьей стенке, Вт/м2:</td>
+            <td>@Math.Round(Model.Q3Stenk, 2)</td>
+        </tr>}
+                    @if (Model.Layers == 3)
+                    {
+        <tr class="layer layer_2 layer_3 layer_4">
+            <td>Тепловой поток от третьей стенки в окружающую среду, Вт/м2:</td>
+            <td>@Math.Round(Model.Qenvironment, 2)</td>
+        </tr>}
+                    @if (Model.Layers == 2)
+                    {
+        <tr class="layer layer_2 layer_3 layer_4">
+            <td>Тепловой поток от второй стенки в окружающую среду, Вт/м2:</td>
+            <td>@Math.Round(Model.Qenvironment, 2)</td>
+        </tr>}
+
+                    @if (Model.Layers > 3)
+                    {
+        <tr class="layer layer_4">
+            <td>Тепловой поток в четвертой стенке, Вт/м2:</td>
+            <td>@Math.Round(Model.Q4Stenk, 2)</td>
+        </tr>
                         <tr class="layer layer_2 layer_3 layer_4">
-                            <td>Коэффициент теплоотдачи от внешней стенки в окружающую среду, альфа, Вт/(м2*К) :</td>
-                            <td>@Math.Round(Model.A_otdachi, 2)</td>
-                        </tr>
-                        <tr class="layer layer_2 layer_3 layer_4">
-                            <td>Коэффициент теплопроводности первой стенки, Вт/(м2*К):</td>
-                            <td>@Math.Round(Model.ATeplo1, 2)</td>
-                        </tr>
-                        <tr class="layer layer_2 layer_3 layer_4">
-                            <td>Коэффициент теплопроводности второй стенки, Вт/(м2*К):</td>
-                            <td>@Math.Round(Model.ATeplo2, 2)</td>
-                        </tr>
-
-                        @if (Model.Layers > 2)
-                        {
-                            <tr class="layer layer_3 layer_4">
-                                <td>Коэффициент теплопроводности третьей стенки, Вт/(м2*К):</td>
-                                <td>@Math.Round(Model.ATeplo3, 2)</td>
-                            </tr>
-                        }
-
-                        @if (Model.Layers > 3)
-                        {
-                            <tr class="layer layer_4">
-                                <td>Коэффициент теплопроводности четвертой стенки, Вт/(м2*К):</td>
-                                <td>@Math.Round(Model.ATeplo4, 2)</td>
-                            </tr>
-                        }
-
-                        <tr class="layer layer_2 layer_3 layer_4">
-                            <td>Тепловой поток от газа к стенке, Вт/м2:</td>
-                            <td>@Math.Round(Model.Q_gas, 2)</td>
-                        </tr>
-                        <tr class="layer layer_2 layer_3 layer_4">
-                            <td>Тепловой поток в первой стенке, Вт/м2:</td>
-                            <td>@Math.Round(Model.Q1Stenk, 2)</td>
-                        </tr>
-                        <tr class="layer layer_2 layer_3 layer_4">
-                            <td>Тепловой поток во второй стенке, Вт/м2:</td>
-                            <td>@Math.Round(Model.Q2Stenk, 2)</td>
-                        </tr>
-
-                        @if (Model.Layers > 2)
-                        {
-                            <tr class="layer layer_3 layer_4">
-                                <td>Тепловой поток в третьей стенке, Вт/м2:</td>
-                                <td>@Math.Round(Model.Q3Stenk, 2)</td>
-                            </tr>
-
-
-                        }
-                        @if (Model.Layers == 3)
-                        {
-                            <tr class="layer layer_2 layer_3 layer_4">
-                                <td>Тепловой поток от третьей стенки в окружающую среду, Вт/м2:</td>
-                                <td>@Math.Round(Model.Qenvironment, 2)</td>
-                            </tr>
-
-                        }
-                        @if (Model.Layers == 2)
-                        {
-                            <tr class="layer layer_2 layer_3 layer_4">
-                                <td>Тепловой поток от второй стенки в окружающую среду, Вт/м2:</td>
-                                <td>@Math.Round(Model.Qenvironment, 2)</td>
-                            </tr>
-
-                        }
-
-                        @if (Model.Layers > 3)
-                        {
-                            <tr class="layer layer_4">
-                                <td>Тепловой поток в четвертой стенке, Вт/м2:</td>
-                                <td>@Math.Round(Model.Q4Stenk, 2)</td>
-                            </tr>
-                            <tr class="layer layer_2 layer_3 layer_4">
-                                <td>Тепловой поток от четвертой стенки в окружающую среду, Вт/м2:</td>
-                                <td>@Math.Round(Model.Qenvironment, 2)</td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-                <button type="submit" style="font-size: 16px" class="btn btn-primary">График</button>
+                            <td>Тепловой поток от четвертой стенки в окружающую среду, Вт/м2:</td>
+                            <td>@Math.Round(Model.Qenvironment, 2)</td>
+                        </tr>}
+                </tbody>
+            </table>
+            <div class="row container">
+                @using (Html.BeginForm("Graphic", "Home", FormMethod.Post))
+                {
+            <button type="submit" style="font-size: 16px" class="btn btn-primary">График</button>            }
+                @using (Html.BeginForm("Report", "Home", FormMethod.Post))
+                {
+            <button type="submit" style="font-size: 16px; margin-left:10px" class="btn btn-primary">Отчет</button>            }
             </div>
         </div>
     </div>
-}
+</div>
