@@ -1,0 +1,182 @@
+﻿
+
+@{
+    ViewData["Title"] = "Исходные данные";
+}
+@model _2021_ZubakovSemon.Models.DataInputModel;
+
+@using (Html.BeginForm("DataInput", "Home", FormMethod.Post))
+{
+    <div class="text-left">
+        <h3>Форма внесения исходных данных</h3>
+        <p><b>Для расчета заполните следующие поля:</b></p>
+        <form method="post">
+
+            <div class="validation" asp-validation-summary="ModelOnly"></div>
+
+
+            <div class="layer layer_4" style=" position:absolute; left:1100px">
+                <img src="~/css/4layers.jpg" style=" width:700px; height:600px" />
+            </div>
+            <div class="layer layer_3" style=" position:absolute; left:1100px">
+                <img src="~/css/3layers.jpg" style=" width:700px; height:600px" />
+            </div>
+            <div class="layer layer_2" style=" position:absolute; left:1100px">
+                <img src="~/css/2layers.png" style=" width:700px; height:600px" />
+            </div>
+            <table >
+
+                <tr>
+
+                    <td>Количество слоев:</td>
+
+
+                    <td>
+
+                        <select id="Layers" name="DataInput.Layers" , style="border-radius: 10px; border: 1px solid black; width: 100px; text-align-last:center" (double)(ViewBag.DataInput.Layers)>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </td>
+
+                </tr>
+
+                <tr class="layer layer_2 layer_3 layer_4 ">
+                    <td >Толщина 1-й стенки, м:</td>
+                    <td class= "td_value">@Html.TextBox("DataInput.S1", (double)(ViewBag.DataInput.S1), htmlAttributes: new { type = "text", style = "  border-radius: 10px; border: 1px solid black; width:500x; text-align:center", onkeypress = " return event.charCode == 44 || (event.charCode >= 48 && event.charCode <= 57)" })</td>
+
+                </tr>
+                <tr class="layer layer_2 layer_3 layer_4">
+                    <td >Толщина 2-й стенки, м:</td>
+                    <td class= "td_value">@Html.TextBox("DataInput.S2", (double)(ViewBag.DataInput.S2), htmlAttributes: new { type = "text", style = " border-radius: 10px; border: 1px solid black; text-align:center", @class = "layer layer_2 layer_3 layer_4", onkeypress = " return event.charCode == 44 || (event.charCode >= 48 && event.charCode <= 57)" })</td>
+                </tr>
+                <tr class="layer layer_3 layer_4">
+                    <td>Толщина 3-й стенки, м:</td>
+                    <td class= "td_value">@Html.TextBox("DataInput.S3", (double)(ViewBag.DataInput.S3), htmlAttributes: new { type = "text", style = "  border-radius: 10px; border: 1px solid black; text-align:center ", @class = "layer layer_3 layer_4 ", onkeypress = " return event.charCode == 44 || (event.charCode >= 48 && event.charCode <= 57)" })</td>
+                </tr>
+                <tr class="layer layer_4">
+                    <td>Толщина 4-й стенки, м:</td>
+                    <td class= "td_value">@Html.TextBox("DataInput.S4", (double)(ViewBag.DataInput.S4), htmlAttributes: new { type = "text", style = "  border-radius: 10px; border: 1px solid black; text-align:center ", @class = "layer layer_4", onkeypress = " return event.charCode == 44 || (event.charCode >= 48 && event.charCode <= 57)" })</td>
+                </tr>
+
+
+                <tr>
+                    <td>Температура окружающей среды, °С:</td>
+                    <td class= "td_value">@Html.TextBox("DataInput.TEnvironment", (double)(ViewBag.DataInput.TEnvironment), htmlAttributes: new { type = "text", style = "  border-radius: 10px; border: 1px solid black; text-align:center ", onkeypress = " return event.charCode == 44 || (event.charCode >= 48 && event.charCode <= 57)" })</td>
+                </tr>
+                <tr>
+                    <td>Температура газа, °С:</td>
+                    <td class= "td_value">@Html.TextBox("DataInput.Tgas", (double)(ViewBag.DataInput.Tgas), htmlAttributes: new { type = "text", style = "  border-radius: 10px; border: 1px solid black; text-align:center ", onkeypress = " return event.charCode == 44 || (event.charCode >= 48 && event.charCode <= 57)" })</td>
+                </tr>
+
+                <tr class="layer layer_2 layer_3 layer_4">
+                    <td>Коэффициент A1 для расчета теплопроводности 1-го материала:</td>
+                    <td class= "td_value">@Html.TextBox("DataInput.A1", (double)(ViewBag.DataInput.A1), htmlAttributes: new { type = "text", style = "  border-radius: 10px; border: 1px solid black; text-align:center", onkeypress = " return event.charCode == 44 || (event.charCode >= 48 && event.charCode <= 57)" })</td>
+                </tr>
+                <tr class="layer layer_2 layer_3 layer_4">
+                    <td>Коэффициент A2 для расчета теплопроводности 2-го материала:</td>
+                    <td class= "td_value">@Html.TextBox("DataInput.A2", (double)(ViewBag.DataInput.A2), htmlAttributes: new { type = "text", style = "  border-radius: 10px; border: 1px solid black; text-align:center ", onkeypress = " return event.charCode == 44 || (event.charCode >= 48 && event.charCode <= 57)" })</td>
+                </tr>
+                <tr class="layer layer_3 layer_4">
+                    <td>Коэффициент A3 для расчета теплопроводности 3-го материала:</td>
+                    <td class= "td_value">@Html.TextBox("DataInput.A3", (double)(ViewBag.DataInput.A3), htmlAttributes: new { type = "text", style = "  border-radius: 10px; border: 1px solid black; text-align:center ", onkeypress = " return event.charCode == 44 || (event.charCode >= 48 && event.charCode <= 57)" })</td>
+                </tr>
+                <tr class="layer layer_4">
+                    <td>Коэффициент A4 для расчета теплопроводности 4-го материала:</td>
+                    <td class= "td_value">@Html.TextBox("DataInput.A4", (double)(ViewBag.DataInput.A4), htmlAttributes: new { type = "text", style = "  border-radius: 10px; border: 1px solid black; text-align:center  ", onkeypress = " return event.charCode == 44 || (event.charCode >= 48 && event.charCode <= 57)" })</td>
+                </tr>
+
+                <tr class="layer layer_2 layer_3 layer_4">
+                    <td>Коэффициент B1 для расчета теплопроводности 1-го материала:</td>
+                    <td class= "td_value">@Html.TextBox("DataInput.B1", (double)(ViewBag.DataInput.B1), htmlAttributes: new { type = "text", style = "  border-radius: 10px; border: 1px solid black; text-align:center ", onkeypress = " return event.charCode == 44 || (event.charCode >= 48 && event.charCode <= 57)" })</td>
+                </tr>
+                <tr class="layer layer_2 layer_3 layer_4">
+                    <td>Коэффициент B2 для расчета теплопроводности 2-го материала:</td>
+                    <td class= "td_value">@Html.TextBox("DataInput.B2", (double)(ViewBag.DataInput.B2), htmlAttributes: new { type = "text", style = "  border-radius: 10px; border: 1px solid black; text-align:center  ", onkeypress = " return event.charCode == 44 || (event.charCode >= 48 && event.charCode <= 57)" })</td>
+                </tr>
+                <tr class="layer layer_3 layer_4">
+                    <td>Коэффициент B3 для расчета теплопроводности 3-го материала:</td>
+                    <td class= "td_value">@Html.TextBox("DataInput.B3", (double)(ViewBag.DataInput.B3), htmlAttributes: new { type = "text", style = "  border-radius: 10px; border: 1px solid black;  text-align:center ", onkeypress = " return event.charCode == 44 || (event.charCode >= 48 && event.charCode <= 57)" })</td>
+                </tr>
+                <tr class="layer layer_4">
+                    <td>Коэффициент B4 для расчета теплопроводности 4-го материала:</td>
+                    <td class= "td_value">@Html.TextBox("DataInput.B4", (double)(ViewBag.DataInput.B4), htmlAttributes: new { type = "text", style = "  border-radius: 10px; border: 1px solid black; text-align:center  ", onkeypress = " return event.charCode == 44 || (event.charCode >= 48 && event.charCode <= 57)" })</td>
+                </tr>
+
+
+                <tr>
+                    <td>Температура внутренней стенки T1:</td>
+                    <td class= "td_value">@Html.TextBox("DataInput.T1Stenk", (double)(ViewBag.DataInput.T1Stenk), htmlAttributes: new { type = "text", style = "  border-radius: 10px; border: 1px solid black; text-align:center ", onkeypress = " return event.charCode == 44 || (event.charCode >= 48 && event.charCode <= 57)" })</td>
+                </tr>
+                <tr>
+                    <td>Температура на границе поверхностей стенки T2:</td>
+                    <td class= "td_value">@Html.TextBox("DataInput.T2border", (double)(ViewBag.DataInput.T2border), htmlAttributes: new { type = "text", style = "  border-radius: 10px; border: 1px solid black; text-align:center  ", onkeypress = " return event.charCode == 44 || (event.charCode >= 48 && event.charCode <= 57)" })</td>
+                </tr>
+                <tr>
+                    <td>Температура на границе поверхностей стенки T3:</td>
+                    <td class= "td_value">@Html.TextBox("DataInput.T3border", (double)(ViewBag.DataInput.T3border), htmlAttributes: new { type = "text", style = "  border-radius: 10px; border: 1px solid black; text-align:center  ", onkeypress = " return event.charCode == 44 || (event.charCode >= 48 && event.charCode <= 57)" })</td>
+                </tr>
+                <tr>
+                    <td>Температура на границе поверхностей стенки T4:</td>
+                    <td class= "td_value">@Html.TextBox("DataInput.T4border", (double)(ViewBag.DataInput.T4border), htmlAttributes: new { type = "text", style = "  border-radius: 10px; border: 1px solid black; text-align:center  ", onkeypress = " return event.charCode == 44 || (event.charCode >= 48 && event.charCode <= 57)" })</td>
+                </tr>
+                <tr>
+                    <td>Температура наружной поверхности стенки, °С:</td>
+                    <td class= "td_value">@Html.TextBox("DataInput.TOutBorder", (double)(ViewBag.DataInput.TOutBorder), htmlAttributes: new { type = "text", style = "  border-radius: 10px; border: 1px solid black; text-align:center ", onkeypress = " return event.charCode == 44 || (event.charCode >= 48 && event.charCode <= 57)" })</td>
+                </tr>
+
+
+            </table>
+
+
+            <div class="form-group" style="margin-left: auto; margin-top: 20px">
+                <button type="button" name="action" value="toSolver" onclick="valid()"  style="font-size: 16px" class="btn btn-primary">Расчет</button>
+            </div>
+            <p style="font-size:14px"><i>*Обратите внимание: все поля должны быть заполнены, необходимо вводить только числа</i></p>
+
+
+        </form>
+    </div>
+}
+
+<script>
+
+    function updateLayerCount() {
+        var layerCount = $('#Layers').val();
+
+        $('.layer').hide();
+
+        if (layerCount == 2) {
+            $('.layer_2').show();
+        }
+        else if (layerCount == 3) {
+            $('.layer_3').show();
+        }
+        else if (layerCount == 4) {
+            $('.layer_4').show();
+        }
+    }
+
+    updateLayerCount();
+
+    $('#Layers').on('change', updateLayerCount);
+
+    function valid() {
+        var check = 0;
+        $(".td_value").each(function () {
+            console.log($(this).children().val());
+            if ($(this).children().val() == "") {
+                check = 0;
+                return false;
+            } else {
+                check = 1;
+            }
+        });
+        if (check == 1) {
+            $("form").submit();
+        } else {
+            alert("Проверьте, что вы заполнили все поля");
+        }
+    }
+ </script>

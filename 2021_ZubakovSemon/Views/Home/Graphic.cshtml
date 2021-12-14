@@ -1,0 +1,71 @@
+﻿@using Microsoft.AspNetCore.Http
+@{
+    ViewData["Title"] = "Построение графика";
+}
+@model _2021_ZubakovSemon.Models.GraphicModel;
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"></script>
+
+<script>
+
+                var barChartData =
+                    {
+                        labels: @Html.Raw(Model.AixXLabel), //the names displayed on the x-axis, see images below
+                    datasets:
+                        [{
+                            label: 'График температуры слоев',
+                            fill: 'origin',
+                            type: 'line',
+                            borderWidth: 4,
+                            borderColor: 'black',
+                            data: @Html.Raw(Model.DataSet)  //what you returned back from controller. values displayed on the y-axis, see images below
+                        },@Html.Raw(Model.AdditionalData)]
+                    };
+
+                    window.onload = function ()
+                    {
+                            const ctx = document.getElementById("barcanvas").getContext("2d");
+                            const myChart = new Chart(ctx,
+                                {
+                                    data: barChartData,
+                                    options: {
+                                        scales: {
+                                            x: {
+                                                display: true,
+                                                text: 'Слои стенки',
+                                                type: 'linear',
+                                                offset: false,
+                                                min: @Model.Left.ToString().Replace(',','.'),
+                                                max: @Model.Right.ToString().Replace(',', '.'),
+                                                stepSize: 1,
+                                            },
+                                            y: { beginAtZero: true }
+                                        },
+                                        plugins: {
+                                            datalabels: {
+                                                color: 'blue',
+                                                labels: {
+                                                    title: {
+                                                        font: {
+                                                            weight: 'bold'
+                                                        }
+                                                    },
+                                                    value: {
+                                                        color: 'green'
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                });
+                    }
+</script>
+
+<div style="text-align: center">
+    <canvas id="barcanvas"></canvas>
+</div>
+<div style="text-align: center"></div>
+@using (Html.BeginForm("Report", "Home", FormMethod.Post))
+{
+    <button type="submit" style="font-size: 16px" class="btn btn-primary">Отчет</button>
+}

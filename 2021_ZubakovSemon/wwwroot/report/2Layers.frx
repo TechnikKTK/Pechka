@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" TextQuality="Regular" ReportInfo.Name="Simple List" ReportInfo.Author="Fast Reports Inc" ReportInfo.Description="Demonstrates a simple list report. To create it:&#13;&#10;- go to &quot;Data&quot; menu and select &quot;Choose Report Data...&quot; item to select a datasource;&#13;&#10;- go to &quot;Report|Configure Bands...&quot; menu to create the band structure;&#13;&#10;- return to the report page, doubleclick the data band to show its editor;&#13;&#10;- choose the datasource;&#13;&#10;- drag data from the Data Dictionary window to the band." ReportInfo.Created="01/17/2008 03:05:57" ReportInfo.Modified="12/14/2021 10:36:33" ReportInfo.CreatorVersion="2022.1.0.0">
+  <Dictionary>
+    <Parameter Name="Parameter" DataType="System.String"/>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="28.35" CanGrow="true">
+      <TextObject Name="Text1" Width="718.2" Height="28.35" Text="Расчет плоской печной стенки" HorzAlign="Center" VertAlign="Center" Font="Tahoma, 14pt, style=Bold"/>
+      <ChildBand Name="Child2" Top="32.35" Width="718.2"/>
+    </ReportTitleBand>
+    <DataBand Name="Data1" Top="36.35" Width="718.2" Height="597.24" Border.Lines="All" Border.Color="Maroon" CanGrow="true" Guides="311.85">
+      <TextObject Name="Text2" Width="718.2" Height="37.8" Border.Lines="All" Border.Color="Maroon" Fill="LinearGradient" Fill.StartColor="IndianRed" Fill.EndColor="Maroon" Fill.Angle="90" Fill.Focus="0.52" Fill.Contrast="1" Text="Данные для расчета" Padding="10, 0, 2, 0" VertAlign="Center" Font="Tahoma, 12pt, style=Bold" TextFill.Color="White"/>
+      <TableObject Name="Table1" Left="9.45" Top="47.25" Width="699.42" Height="226.8" Fill.Color="SlateBlue">
+        <TableColumn Name="Column1" Width="571.75"/>
+        <TableColumn Name="Column2" Width="127.67"/>
+        <TableRow Name="Row1">
+          <TableCell Name="Cell1" Text="Количество слоев:" Padding="3, 3, 3, 3" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+          <TableCell Name="Cell2" Border.Lines="All" Border.Color="White" Text="[DataInput.Layers]" Padding="3, 3, 3, 3" HorzAlign="Center" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+        </TableRow>
+        <TableRow Name="Row2">
+          <TableCell Name="Cell6" Text="Толщина 1-й стенки, м:" Padding="3, 3, 3, 3" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+          <TableCell Name="Cell7" Border.Lines="All" Border.Color="White" Text="[DataInput.S1]" Padding="3, 3, 3, 3" HorzAlign="Center" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+        </TableRow>
+        <TableRow Name="Row3">
+          <TableCell Name="Cell11" Text="Толщина 2-й стенки, м:" Padding="3, 3, 3, 3" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+          <TableCell Name="Cell12" Border.Lines="All" Border.Color="White" Text="[DataInput.S2]" Padding="3, 3, 3, 3" HorzAlign="Center" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+        </TableRow>
+        <TableRow Name="Row4">
+          <TableCell Name="Cell351" Text="Температура окружающей среды, °С:" Padding="3, 3, 3, 3" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+          <TableCell Name="Cell352" Border.Lines="All" Border.Color="White" Text="[DataInput.TEnvironment]" Padding="3, 3, 3, 3" HorzAlign="Center" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+        </TableRow>
+        <TableRow Name="Row5">
+          <TableCell Name="Cell353" Text="Температура газа, °С:" Padding="3, 3, 3, 3" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+          <TableCell Name="Cell354" Border.Lines="All" Border.Color="White" Text="[DataInput.Tgas]" Padding="3, 3, 3, 3" HorzAlign="Center" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+        </TableRow>
+        <TableRow Name="Row6">
+          <TableCell Name="Cell355" Text="Коэффициент A1 для расчета теплопроводности 1-го материала:	" Padding="3, 3, 3, 3" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+          <TableCell Name="Cell356" Border.Lines="All" Border.Color="White" Text="[DataInput.A1]" Padding="3, 3, 3, 3" HorzAlign="Center" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+        </TableRow>
+        <TableRow Name="Row7">
+          <TableCell Name="Cell357" Text="Коэффициент A2 для расчета теплопроводности 2-го материала:	" Padding="3, 3, 3, 3" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+          <TableCell Name="Cell358" Border.Lines="All" Border.Color="White" Text="[DataInput.A2]" Padding="3, 3, 3, 3" HorzAlign="Center" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+        </TableRow>
+        <TableRow Name="Row8">
+          <TableCell Name="Cell403" Text="Коэффициент B1 для расчета теплопроводности 1-го материала:	" Padding="3, 3, 3, 3" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+          <TableCell Name="Cell404" Border.Lines="All" Border.Color="White" Text="[DataInput.B1]" Padding="3, 3, 3, 3" HorzAlign="Center" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+        </TableRow>
+        <TableRow Name="Row9">
+          <TableCell Name="Cell405" Text="Коэффициент B2 для расчета теплопроводности 2-го материала:	" Padding="3, 3, 3, 3" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+          <TableCell Name="Cell406" Border.Lines="All" Border.Color="White" Text="[DataInput.B2]" Padding="3, 3, 3, 3" HorzAlign="Center" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+        </TableRow>
+        <TableRow Name="Row10">
+          <TableCell Name="Cell415" Text="Температура внутренней стенки T1:" Padding="3, 3, 3, 3" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+          <TableCell Name="Cell416" Border.Lines="All" Border.Color="White" Text="[DataInput.T1Stenk]" Padding="3, 3, 3, 3" HorzAlign="Center" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+        </TableRow>
+        <TableRow Name="Row11">
+          <TableCell Name="Cell417" Text="Температура на границе поверхностей стенки T2:" Padding="3, 3, 3, 3" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+          <TableCell Name="Cell418" Border.Lines="All" Border.Color="White" Text="[DataInput.T2border]" Padding="3, 3, 3, 3" HorzAlign="Center" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+        </TableRow>
+        <TableRow Name="Row12">
+          <TableCell Name="Cell427" Text="Температура наружной поверхности стенки, °С:" Padding="3, 3, 3, 3" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+          <TableCell Name="Cell428" Border.Lines="All" Border.Color="White" Text="[DataInput.TOutBorder]" Padding="3, 3, 3, 3" HorzAlign="Center" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+        </TableRow>
+      </TableObject>
+      <TextObject Name="Text13" Top="311.85" Width="718.2" Height="37.8" Border.Lines="All" Border.Color="Maroon" Fill="LinearGradient" Fill.StartColor="IndianRed" Fill.EndColor="Maroon" Fill.Angle="90" Fill.Focus="0.52" Fill.Contrast="1" Text="Результаты расчета" Padding="10, 0, 2, 0" VertAlign="Center" Font="Tahoma, 12pt, style=Bold" TextFill.Color="White"/>
+      <TableObject Name="Table2" Left="9.45" Top="359.1" Width="699.41" Height="226.8" Fill.Color="Chocolate">
+        <TableColumn Name="Column3" Width="567.03"/>
+        <TableColumn Name="Column4" Width="132.38"/>
+        <TableRow Name="Row15" Height="28.35">
+          <TableCell Name="Cell89" Border.Lines="All" Border.Color="White" Text="Наименование показателя, ед. изм." Padding="3, 3, 3, 3" Font="Arial Narrow, 12pt, style=Bold" TextFill.Color="White"/>
+          <TableCell Name="Cell90" Border.Lines="All" Border.Color="White" Text="Величина" Padding="3, 3, 3, 3" Font="Arial Narrow, 12pt, style=Bold" TextFill.Color="White"/>
+        </TableRow>
+        <TableRow Name="Row16" Height="28.35">
+          <TableCell Name="Cell94" Fill.Color="Firebrick" Text="Коэффициент теплоотдачи от внешней стенки в окружающую среду, альфа, Вт/(м2*К) :" Padding="3, 3, 3, 3" VertAlign="Center" Font="Arial, 9pt" TextFill.Color="White"/>
+          <TableCell Name="Cell95" Border.Lines="All" Border.Color="White" Fill.Color="Firebrick" Text="[Model.A_otdachi]" Padding="3, 3, 3, 3" HorzAlign="Center" VertAlign="Center" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+        </TableRow>
+        <TableRow Name="Row17" Height="28.35">
+          <TableCell Name="Cell99" Fill.Color="Firebrick" Text="Коэффициент теплопроводности первой стенки, Вт/(м2*К):" Padding="3, 3, 3, 3" VertAlign="Center" Font="Arial, 9pt" TextFill.Color="White"/>
+          <TableCell Name="Cell100" Border.Lines="All" Border.Color="White" Fill.Color="Firebrick" Text="[Model.ATeplo1]" Padding="3, 3, 3, 3" HorzAlign="Center" VertAlign="Center" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+        </TableRow>
+        <TableRow Name="Row18" Height="28.35">
+          <TableCell Name="Cell104" Fill.Color="Firebrick" Text="Коэффициент теплопроводности второй стенки, Вт/(м2*К):" Padding="3, 3, 3, 3" VertAlign="Center" Font="Arial, 9pt" TextFill.Color="White"/>
+          <TableCell Name="Cell105" Border.Lines="All" Border.Color="White" Fill.Color="Firebrick" Text="[Model.ATeplo2]" Padding="3, 3, 3, 3" HorzAlign="Center" VertAlign="Center" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+        </TableRow>
+        <TableRow Name="Row19" Height="28.35">
+          <TableCell Name="Cell385" Fill.Color="Firebrick" Text="Тепловой поток от газа к стенке, Вт/м2:" Padding="3, 3, 3, 3" VertAlign="Center" Font="Arial, 9pt" TextFill.Color="White"/>
+          <TableCell Name="Cell386" Border.Lines="All" Border.Color="White" Fill.Color="Firebrick" Text="[Model.Q_gas]" Padding="3, 3, 3, 3" HorzAlign="Center" VertAlign="Center" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+        </TableRow>
+        <TableRow Name="Row20" Height="28.35">
+          <TableCell Name="Cell387" Fill.Color="Firebrick" Text="Тепловой поток в первой стенке, Вт/м2:" Padding="3, 3, 3, 3" VertAlign="Center" Font="Arial, 9pt" TextFill.Color="White"/>
+          <TableCell Name="Cell388" Border.Lines="All" Border.Color="White" Fill.Color="Firebrick" Text="[Model.Q1Stenk]" Padding="3, 3, 3, 3" HorzAlign="Center" VertAlign="Center" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+        </TableRow>
+        <TableRow Name="Row21" Height="28.35">
+          <TableCell Name="Cell389" Fill.Color="Firebrick" Text="Тепловой поток во второй стенке, Вт/м2:" Padding="3, 3, 3, 3" VertAlign="Center" Font="Arial, 9pt" TextFill.Color="White"/>
+          <TableCell Name="Cell390" Border.Lines="All" Border.Color="White" Fill.Color="Firebrick" Text="[Model.Q2Stenk]" Padding="3, 3, 3, 3" HorzAlign="Center" VertAlign="Center" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+        </TableRow>
+        <TableRow Name="Row22" Height="28.35">
+          <TableCell Name="Cell393" Fill.Color="Firebrick" Text="Тепловой поток от второй стенки в окружающую среду, Вт/м2:" Padding="3, 3, 3, 3" VertAlign="Center" Font="Arial, 9pt" TextFill.Color="White"/>
+          <TableCell Name="Cell394" Border.Lines="All" Border.Color="White" Fill.Color="Firebrick" Text="[Model.Qenvironment]" Padding="3, 3, 3, 3" HorzAlign="Center" VertAlign="Center" Font="Arial Narrow, 9.75pt" TextFill.Color="White"/>
+        </TableRow>
+      </TableObject>
+      <ChildBand Name="Child1" Top="637.59" Width="718.2" Height="18.9"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="660.49" Width="718.2" Height="28.35" Fill.Color="WhiteSmoke" CanGrow="true">
+      <TextObject Name="Text10" Left="614.25" Width="94.5" Height="28.35" Text="[PageN]" HorzAlign="Right" VertAlign="Center" Font="Tahoma, 8pt"/>
+      <TextObject Name="Text12" Left="9.45" Width="217.35" Height="28.35" Hyperlink.Value="https://www.fast-report.com/en/product/fast-report-net/" Text="Generated by FastReport .NET" VertAlign="Center" Font="Tahoma, 8pt, style=Underline" TextFill.Color="Blue"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>
